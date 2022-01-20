@@ -1,0 +1,21 @@
+﻿* {
+    font-family: \"Helvetica\", sans-serif;
+}
+
+body {
+    background-color: #48A;
+    background-image: url(https://github.com/JohnyWuijtsSL/Johny-SD1A-Repo/blob/main/3%20Periode%203/Software%20Development/Website/images/emma-bg.png?raw=true);
+    background-position-x: 25%;
+    background-position-y: 0;
+    background-size: cover;
+}
+
+div {
+    background-color: #9298;
+    border-radius: 25px;
+    display: inline-block;
+    left: 40%;
+    margin-left: -340px;
+    padding: 25px;
+    position: relative;
+}
