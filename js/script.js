@@ -1,14 +1,14 @@
 let interval;
 let whiteAmount = 0;
 let blueAmount = 255;
-let increaseAmount = 4;
+let increaseAmount = 16;
 let beWhite = true;
 let beBlack = false;
 let beBlue = false;
 let currentLink;
 function contactHover(link) {
     currentLink = link;
-    interval = setInterval("blueFlash()", 1);
+    interval = setInterval("blueFlash()", 15);
 }
 
 function contactUnhover() {
