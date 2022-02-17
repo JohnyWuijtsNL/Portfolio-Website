@@ -1,23 +1,21 @@
-﻿* {
-    font-family: \"Helvetica\", sans-serif;
-}
-
 body {
-    background-color: #48A;
-    background-image: url(images/emma-bg.jpg);
-    background-position-x: 25%;
-    background-position-y: 0;
-    background-size: cover;
-}
+    padding: 1vw;
+  }
 
-div {
-    background-color: #9298;
-    border-radius: 25px;
-    display: inline-block;
-    left: 40%;
-    margin-left: -340px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    padding: 25px;
-    position: relative;
-}
+  h1 {
+    font-size: 12vw;
+  }
+
+  h2 {
+    font-size: 8vw;
+  }
+
+  .windows {
+    font-family: 'VT323', monospace;
+    color: #0000FF;
+    text-decoration: underline;
+  }
+
+  a {
+    font-size: 10vw;
+  }
