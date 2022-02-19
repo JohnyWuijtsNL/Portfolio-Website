@@ -1,21 +1,37 @@
+@font-face {
+  font-family: "Windows Regular";
+  src: url("fonts/windows-regular.woff"), url("fonts/windows-regular.ttf");
+}
+
 body {
-    padding: 1vw;
-  }
+  padding: 1vw;
+}
 
-  h1 {
-    font-size: 12vw;
-  }
+body.contact {
+  background-color: #fcbce1;
+}
 
-  h2 {
-    font-size: 8vw;
-  }
+div.contact {
+  background-color: #f8ffb0;
+  border: solid 0.5vw #f18a63;
+  border-radius: 1.5vw;
+  display: table;
+  padding: 2vw;
+  margin-top: 8vw;
+}
 
-  .windows {
-    font-family: 'VT323', monospace;
-    color: #0000FF;
-    text-decoration: underline;
-  }
+h1 {
+  font-size: 10vw;
+}
 
-  a {
-    font-size: 10vw;
-  }
+h2 {
+  font-size: 5vw;
+}
+
+.windows,
+.windows:hover {
+  font-family: "Windows Regular";
+  color: #0000ff;
+  text-decoration: underline;
+  font-size: 5vw;
+}
