@@ -8,6 +8,7 @@ var isHovering = false;
 var projectFont;
 var projectsText;
 var oldProjectsFont = 7;
+var firstTime = true;
 
 window.onload = init;
 
@@ -35,8 +36,8 @@ function init() {
     panelOnSprite.onload = function () {
         panelOnSpriteLoaded = true;
     }
-    generateField()
-    interval = setInterval(update, 100);
+    
+    interval = setInterval(update, 80);
 
     projectsText = document.getElementById('projects');
 }
@@ -61,6 +62,16 @@ function generateField() {
 
                     field[x][y] = Math.random() > 0.85;
                 }
+            }
+        }
+    }
+    for (x = 0; x < sizeX; ++x) {
+        for (y = 0; y < sizeY; ++y) {
+            if (field[x][y]) {
+                ctx.drawImage(panelOnSprite, x * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
+            }
+            else {
+                ctx.drawImage(panelOffSprite, x * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
             }
         }
     }
@@ -91,7 +102,10 @@ function draw() {
 
     for (x = 0; x < sizeX; ++x) {
         for (y = 0; y < sizeY; ++y) {
-            if (field[x][y]) {
+            if (field[x][y] == oldField[x][y]) {
+
+            }
+            else if (field[x][y]) {
                 ctx.drawImage(panelOnSprite, x * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
             }
             else {
@@ -104,6 +118,7 @@ function draw() {
         for (y = 1; y < sizeY - 1; ++y) {
             if (Math.random() > 0.999) {
                 field[x][y] = !field[x][y];
+                ctx.drawImage(panelOffSprite, x * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
             }
         }
     }
@@ -111,6 +126,11 @@ function draw() {
 
 function update() {
     if (panelOnSpriteLoaded && panelOffSpriteLoaded) {
+        if (firstTime)
+        {
+            generateField()
+            firstTime = false;
+        }
         draw();
     }
     if (isHovering) {
