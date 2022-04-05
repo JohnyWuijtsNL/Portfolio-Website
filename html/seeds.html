@@ -58,11 +58,16 @@
 
         window.onload = init;
 
+        window.addEventListener('scroll', function () {
+            scrollValue = window.scrollY;
+            document.getElementById('canvas').style.top = scrollValue * 0.5 + "px";
+        })
+
         function init() {
             canvas = document.getElementById("canvas");
             ctx = canvas.getContext("2d");
             sizeX = Math.floor(window.innerWidth / 8)
-            sizeY = Math.floor(window.innerHeight / 8)
+            sizeY = Math.floor(document.body.scrollHeight / 8 * 3)
             canvas.setAttribute("width", sizeX);
             canvas.setAttribute("height", sizeY);
 
@@ -213,13 +218,17 @@
     <canvas id="canvas" width="384" height="216"></canvas>
     <div id="seeds-main">
         <h1>SEEDS</h1>
-        <p class="description">SEEDS is a game I made for my intake assignment at SintLucas. For the assignment, we had two weeks to make
+        <p class="description">SEEDS is a game I made for my intake assignment at SintLucas. For the assignment, we had
+            two weeks to make
             something with the theme being "The beginning". I chose to make a collection of minigames that are about
             taking a seed or fruit to the end, so it can "begin" their life as a plant. It ended up being only two
             minigames, but I think they turned out pretty well.</p>
 
-            <p class="link"><a href="https://johnywuijtsnl.itch.io/seeds" title="Play SEEDS in your browser!" target="blank">Play SEEDS in your browser!</a></p>
-            <p class="link"><a href="https://www.youtube.com/watch?v=NlOpKGZdUeM" title="Watch a playthrough of one of the minigames!" target="blank">Watch a playthrough of one of the minigames!</a></p><br><br>
+        <p class="link"><a href="https://johnywuijtsnl.itch.io/seeds" title="Play SEEDS in your browser!"
+                target="blank">Play SEEDS in your browser!</a></p>
+        <p class="link"><a href="https://www.youtube.com/watch?v=NlOpKGZdUeM"
+                title="Watch a playthrough of one of the minigames!" target="blank">Watch a playthrough of one of the
+                minigames!</a></p><br><br>
     </div>
 
 

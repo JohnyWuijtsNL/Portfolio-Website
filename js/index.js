@@ -5,6 +5,8 @@ var field = []
 var oldField = []
 var scrollValue;
 var isHovering = false;
+var isAvoiding = false;
+var avoidTop = 0;
 var projectFont;
 var projectsText;
 var oldProjectsFont = 7;
@@ -198,10 +200,21 @@ function update() {
         projectsText.style.color = "rgb(0, 0, 255)";
         projectsText.style.fontFamily = "inherit";
     }
+
+    if (isAvoiding)
+    {
+        console.log("test");
+        avoidTop += 50;
+        document.getElementById("about").style.top = avoidTop + "px";
+    }
 }
 
 function changeHover(hovering) {
     isHovering = hovering;
+}
+
+function avoid(avoiding) {
+    isAvoiding = avoiding;
 }
 
 function generateColor() {
