@@ -1,0 +1,23 @@
+﻿* {
+    font-family: \"Helvetica\", sans-serif;
+}
+
+body {
+    background-color: #48A;
+    background-image: url(img/emma-bg.jpg);
+    background-position-x: 25%;
+    background-position-y: 0;
+    background-size: cover;
+}
+
+div {
+    background-color: #9298;
+    border-radius: 25px;
+    display: inline-block;
+    left: 40%;
+    margin-left: -340px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 25px;
+    position: relative;
+}
