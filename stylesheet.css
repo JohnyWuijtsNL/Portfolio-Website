@@ -10,9 +10,9 @@ body {
 
 .index-div {
   background-image: url("img/metal.jpg");
-  background-size: 1250px;
+  background-size: 1400px;
   width: 40%;
-  height: 750px;
+  height: 850px;
   text-align: center;
   margin-top: 100px;
   margin-left: auto;
@@ -55,7 +55,7 @@ div.windows-title {
 }
 
 h1 {
-  font-size: 90px;
+  font-size: 110px;
 }
 
 h2 {
