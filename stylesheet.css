@@ -10,9 +10,9 @@ body {
 
 .index-div {
   background-image: url("img/metal.jpg");
-  background-size: 1000px;
+  background-size: 1200px;
   width: 40%;
-  height: 600px;
+  height: 700px;
   text-align: center;
   margin-top: 100px;
   margin-left: auto;
@@ -23,6 +23,7 @@ body {
 
 div.about {
   background-image: url("img/wood.jpg");
+  color: grey;
 }
 
 #index-canvas {
@@ -54,7 +55,7 @@ div.windows-title {
 }
 
 h1 {
-  font-size: 100px;
+  font-size: 85px;
 }
 
 h2 {

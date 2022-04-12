@@ -21,7 +21,7 @@ window.addEventListener('scroll', function () {
 
 function init() {
     sizeX = Math.floor(window.innerWidth / tileSize);
-    sizeY = Math.floor(window.innerHeight / tileSize) * 8;
+    sizeY = Math.floor(window.innerHeight / tileSize) * 2.5;
     canvas = document.getElementById("index-canvas");
     ctx = canvas.getContext("2d");
     canvas.width = sizeX * tileSize;
