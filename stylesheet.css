@@ -11,7 +11,7 @@ body {
 .index-div {
   background-image: url("img/metal.jpg");
   background-size: 1400px;
-  width: 40%;
+  width: 750px;
   height: 850px;
   text-align: center;
   margin-top: 100px;
@@ -23,7 +23,6 @@ body {
 
 div.about {
   background-image: url("img/wood.jpg");
-  color: grey;
 }
 
 #index-canvas {
