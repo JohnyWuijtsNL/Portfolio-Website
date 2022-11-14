@@ -1,4 +1,4 @@
-var canvas, ctx, canvasWidth, canvasHeight, sizeX, sizeY, panelOffSprite, panelOnSprite, panelOffSpriteLoaded, panelOnSpriteLoaded, neighbours;
+var canvas, canvas2, ctx, ctx2, canvasWidth, canvasHeight, sizeX, sizeY, panelOffSprite, panelOnSprite, panelOffSpriteLoaded, panelOnSpriteLoaded, neighbours;
 var tileSize = 10;
 tileSize = 50;
 var field = []
@@ -14,18 +14,18 @@ var firstTime = true;
 
 window.onload = init;
 
-window.addEventListener('scroll', function () {
-    scrollValue = window.scrollY;
-    document.getElementById('index-canvas').style.top = scrollValue * 0.5 + "px";
-})
 
 function init() {
-    sizeX = Math.floor(window.innerWidth / tileSize);
-    sizeY = Math.floor(window.innerHeight / tileSize) * 4;
+    sizeX = 18;
+    sizeY = 64;
     canvas = document.getElementById("index-canvas");
+    canvas2 = document.getElementById("index-canvas-2");
     ctx = canvas.getContext("2d");
-    canvas.width = sizeX * tileSize;
+    ctx2 = canvas2.getContext("2d");
+    canvas.width = sizeX * tileSize / 2;
+    canvas2.width = sizeX * tileSize / 2;
     canvas.height = sizeY * tileSize;
+    canvas2.height = sizeY * tileSize;
     sizeX += 2;
     sizeY += 2;
     panelOffSprite = new Image();
@@ -69,16 +69,12 @@ function generateField() {
     }
     for (x = 0; x < sizeX; ++x) {
         for (y = 0; y < sizeY; ++y) {
-            if (field[x][y]) {
-                ctx.drawImage(panelOnSprite, x * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
-            }
-            else {
-                ctx.drawImage(panelOffSprite, x * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
-            }
+            drawSprite(field[x][y], x, y)
         }
     }
 }
 
+//calculates and draws a new frame
 function draw() {
     for (var x = 0; x < sizeX; x++) {
         for (var y = 0; y < sizeY; y++) {
@@ -107,12 +103,7 @@ function draw() {
             if (field[x][y] == oldField[x][y]) {
 
             }
-            else if (field[x][y]) {
-                ctx.drawImage(panelOnSprite, x * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
-            }
-            else {
-                ctx.drawImage(panelOffSprite, x * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
-            }
+            drawSprite(field[x][y], x, y)
         }
     }
 
@@ -120,7 +111,6 @@ function draw() {
         for (y = 1; y < sizeY - 1; ++y) {
             if (Math.random() > 0.999) {
                 field[x][y] = !field[x][y];
-                ctx.drawImage(panelOffSprite, x * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
             }
         }
     }
@@ -135,104 +125,30 @@ function update() {
         }
         draw();
     }
-    if (isHovering) {
-        projectsText.style.color = generateColor();
-        projectFont = oldProjectsFont;
-        while (projectFont == oldProjectsFont) {
-            projectFont = Math.floor(Math.random() * 17);
-        }
-        oldProjectsFont = projectFont;
-        switch (projectFont) {
-            case 0:
-                projectsText.style.fontFamily = "'Courier New', Courier, monospace";
-                break;
-            case 1:
-                projectsText.style.fontFamily = "'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif";
-                break;
-            case 2:
-                projectsText.style.fontFamily = "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif";
-                break;
-            case 3:
-                projectsText.style.fontFamily = "'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif";
-                break;
-            case 4:
-                projectsText.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
-                break;
-            case 5:
-                projectsText.style.fontFamily = "'Times New Roman', Times, serif";
-                break;
-            case 6:
-                projectsText.style.fontFamily = "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif";
-                break;
-            case 7:
-                projectsText.style.fontFamily = "Arial, Helvetica, sans-serif";
-                break;
-            case 8:
-                projectsText.style.fontFamily = "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif";
-                break;
-            case 9:
-                projectsText.style.fontFamily = "Georgia, 'Times New Roman', Times, serif";
-                break;
-            case 10:
-                projectsText.style.fontFamily = "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif";
-                break;
-            case 11:
-                projectsText.style.fontFamily = "Verdana, Geneva, Tahoma, sans-serif";
-                break;
-            case 12:
-                projectsText.style.fontFamily = "cursive";
-                break;
-            case 13:
-                projectsText.style.fontFamily = "fantasy";
-                break;
-            case 14:
-                projectsText.style.fontFamily = "monospace";
-                break;
-            case 15:
-                projectsText.style.fontFamily = "sans-serif";
-                break;
-            case 16:
-                projectsText.style.fontFamily = "serif";
-                break;
-        }
-    }
-    else {
-        projectsText.style.color = "rgb(0, 0, 255)";
-        projectsText.style.fontFamily = "inherit";
-    }
+}
 
-    if (isAvoiding)
+function drawSprite(isOn, x, y)
+{
+    if (isOn)
     {
-        console.log("test");
-        avoidTop += 50;
-        document.getElementById("about").style.top = avoidTop + "px";
+        if (x < 10)
+        {
+            ctx.drawImage(panelOnSprite, x * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
+        }
+        else
+        {
+            ctx2.drawImage(panelOnSprite, (x - 9) * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
+        }
     }
-}
-
-function changeHover(hovering) {
-    isHovering = hovering;
-}
-
-function avoid(avoiding) {
-    isAvoiding = avoiding;
-}
-
-function generateColor() {
-    var changingColor = Math.floor(Math.random() * 6);
-    console.log(changingColor);
-    switch (changingColor) {
-        case 0:
-            return "rgb(" + Math.floor(Math.random() * 256) + ", 0, 255)";
-        case 1:
-            return "rgb(0, " + Math.floor(Math.random() * 256) + ", 255)";
-        case 2:
-            return "rgb(0, 255, " + Math.floor(Math.random() * 256) + ")";
-        case 3:
-            return "rgb(" + Math.floor(Math.random() * 256) + ", 255, 0)";
-        case 4:
-            return "rgb(255, " + Math.floor(Math.random() * 256) + ", 0)";
-        case 5:
-            return "rgb(255, 0, " + Math.floor(Math.random() * 256) + ")";
+    else
+    {
+        if (x < 10)
+        {
+            ctx.drawImage(panelOffSprite, x * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
+        }
+        else
+        {
+            ctx2.drawImage(panelOffSprite, (x - 9) * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
+        }
     }
-
 }
