@@ -1,283 +1,300 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
-            rel="stylesheet">
 
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @font-face {
+            font-family: "Sono";
+            src: url("fonts/Sono-VariableFont_MONO,wght.ttf");
+        }
 
-        <link
-            href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
-            rel="stylesheet">
-        <style>
+        * {
+            box-sizing: border-box;
+            margin: 0
+        }
 
-            body {
-                margin: 0;
-                background-color: #696969;
-                font-family: 'Concert One', cursive;
-            }
+        body {
+            background-color: #696969;
+            font-family: 'Sono', sans-serif;
+        }
+
+        html {
+            word-spacing: -3px;
+        }
+
+        #main {
+            background-color: #696969;
+            margin: 0 450px;
+            padding: 0;
+            height: 1750px;
+            width: auto;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0px;
+            width: 450px;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 15px;
+            margin: 30px;
+        }
+
+        #index-canvas-2 {
+            right: 0px;
+        }
+
+        @media screen and (max-width:1820px) {
             #main {
-                background-color: #696969;
-                margin: 0 450px;
-                padding: 0;
-                height: 1750px;
-                width: auto;
+                margin: 0 400px;
+            }
+        }
+
+        @media screen and (max-width:1720px) {
+            #main {
+                margin: 0 350px;
+            }
+        }
+
+        @media screen and (max-width:1620px) {
+            #main {
+                margin: 0 300px;
+            }
+        }
+
+        @media screen and (max-width:1520px) {
+            #main {
+                margin: 0 250px;
+            }
+        }
+
+        @media screen and (max-width:1420px) {
+            #main {
+                margin: 0 200px;
+            }
+        }
+
+        @media screen and (max-width:1320px) {
+            #main {
+                margin: 0 150px;
+            }
+        }
+
+        @media screen and (max-width:1220px) {
+            #main {
+                margin: 0 100px;
+            }
+        }
+
+        @media screen and (max-width:1120px) {
+            #main {
+                margin: 0 50px;
+            }
+        }
+
+        @media screen and (max-width:1020px) {
+            #main {
+                margin: 0;
             }
 
             canvas {
-                position: absolute;
-                top: 0px;
-                width: 450px;
-                z-index: -1;
-                overflow: hidden;
+                display: none;
             }
+        }
 
+        @media screen and (max-width:900px) {
             .buttons {
-                display: grid;
-                grid-template-columns: repeat(3,1fr);
-                grid-gap: 15px;
-                margin: 30px;
-            }
-
-            #index-canvas-2 {
-                right: 0px;
-            }
-
-            @media screen and (max-width:1820px) {
-                #main {
-                    margin: 0 400px;
-                }
-            }
-            @media screen and (max-width:1720px) {
-                #main {
-                    margin: 0 350px;
-                }
-            }
-            @media screen and (max-width:1620px) {
-                #main {
-                    margin: 0 300px;
-                }
-            }
-            @media screen and (max-width:1520px) {
-                #main {
-                    margin: 0 250px;
-                }
-            }
-            @media screen and (max-width:1420px) {
-                #main {
-                    margin: 0 200px;
-                }
-            }
-            @media screen and (max-width:1320px) {
-                #main {
-                    margin: 0 150px;
-                }
-            }
-            @media screen and (max-width:1220px) {
-                #main {
-                    margin: 0 100px;
-                }
-            }
-            @media screen and (max-width:1120px) {
-                #main {
-                    margin: 0 50px;
-                }
-            }
-            @media screen and (max-width:1020px) {
-                #main {
-                    margin: 0;
-                }
-
-                canvas {
-                    width: 0;
-                }
-            }
-
-            @media screen and (max-width:900px) {
-                .buttons {
-                grid-template-columns: repeat(2,1fr);
+                grid-template-columns: repeat(2, 1fr);
                 margin: 20px;
-                }
             }
+        }
 
-            @media screen and (max-width:600px) {
-                .buttons {
-                grid-template-columns: repeat(1,1fr);
+        @media screen and (max-width:600px) {
+            .buttons {
+                grid-template-columns: repeat(1, 1fr);
                 margin: 10px;
-                }
             }
+        }
 
-            h1 {
-                font-size: 75px;
-                margin: 0;
-                text-align: center;
-            }
+        h1 {
+            font-size: 60px;
+            padding-top: 10px;
+            text-align: center;
+        }
 
-            p {
-                font-size: 20px;
-                margin: 0;
-                text-align: center;
-                margin-bottom: 20px;
-            }
+        p {
+            font-size: 20px;
+            text-align: center;
+        }
 
-            #endlessrunner {
-                border-color: lightcoral;
-            }
+        #endlessrunner {
+            border-color: lightcoral;
+            filter: grayscale();
+        }
 
-            #philips {
-                border-color: white;
-            }
+        #philips {
+            border-color: white;
+            filter: grayscale();
+        }
 
-            #pixelsfighting {
-                border-color: red;
-            }
+        #pixelsfighting {
+            border-color: red;
+            filter: grayscale();
+        }
 
-            #portfoliowebsite {
-                border-color: black;
-            }
+        #portfoliowebsite {
+            border-color: black;
+            filter: grayscale();
+        }
 
-            #vrmuseum {
-                border-color: magenta;
-            }
+        #vrmuseum {
+            border-color: magenta;
+            filter: grayscale();
+        }
 
-            #themaze {
-                border-color: darkred;
-            }
+        #themaze {
+            border-color: darkred;
+            filter: grayscale();
+        }
 
-            #gogrow {
-                border-color: black;
-            }
+        #gogrow {
+            border-color: black;
+            filter: grayscale();
+        }
 
-            #bats {
-                border-color: grey;
-            }
+        #bats {
+            border-color: grey;
+            filter: grayscale();
+        }
 
-            #gamejamgames {
-                border-color: orange;
-            }
+        #gamejamgames {
+            border-color: orange;
+            filter: grayscale();
+        }
 
-            #arduino {
-                border-color: white;
-            }
+        #arduino {
+            border-color: white;
+            filter: grayscale();
+        }
 
-            #scripting {
-                border-color: red;
-            }
+        #scripting {
+            border-color: red;
+            filter: grayscale();
+        }
 
-            #pong {
-                border-color: lime;
-            }
+        #pong {
+            border-color: lime;
+            filter: grayscale();
+        }
 
-            #gameoflife {
-                border-color: magenta;
-            }
+        #gameoflife {
+            border-color: magenta;
+            filter: grayscale();
+        }
 
-            #pianomadness {
-                border-color: black;
-            }
+        #pianomadness {
+            border-color: black;
+            filter: grayscale();
+        }
 
-            #illustrator {
-                border-color: orange;
-            }
+        #illustrator {
+            border-color: orange;
+            filter: grayscale();
+        }
 
-            #videomapping {
-                border-color: greenyellow;
-            }
+        #videomapping {
+            border-color: greenyellow;
+            filter: grayscale();
+        }
 
-            #stencil {
-                border-color: black;
-            }
+        #stencil {
+            border-color: black;
+            filter: grayscale();
+        }
 
-            #blippar {
-                border-color: #FF0080;
-            }
+        #blippar {
+            border-color: #FF0080;
+            filter: grayscale();
+        }
 
-            #museum {
-                border-color: magenta;
-            }
+        #museum {
+            border-color: magenta;
+            filter: grayscale();
+        }
 
-            #helloworld {
-                border-color: skyblue;
-            }
+        #helloworld {
+            border-color: skyblue;
+            filter: grayscale();
+        }
 
-            #seeds {
-                border-color: white;
-            }
+        #seeds {
+            border-color: white;
+        }
 
-            #glasscannon {
-                border-color: cyan;
-            }
+        #glasscannon {
+            border-color: cyan;
+        }
 
-            #stopmotion {
-                border-color: yellow;
-            }
+        #stopmotion {
+            border-color: yellow;
+            filter: grayscale();
+        }
 
-            img {
-                border-radius: 25px;
-                width: 100%;
-                height: 100%;
-                border-radius: 30px;
-                border-style: solid;
-                border-width: 3px;
-            }
+        img {
+            border-radius: 25px;
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            border-style: solid;
+            border-width: 3px;
+            transition: transform .08s linear
+        }
 
-        </style>
-        <script src="js/index.js"></script>
-    </head>
-    <body>
+        img:hover {
+            transform: scale(1.03)
+        }
+    </style>
+    <script src="js/index.js"></script>
+</head>
 
-        <div id="main">
-            <h1>Welcome!</h1>
-            <p>I'm Johny Wuijts, and this is my portfolio website!</p>
-            <div class="buttons">
-                <a class="button" 
-                    href="html/glasscannon.html"><img src="img/endlessrunner.png" id="endlessrunner">
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/philips.png" id="philips"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/pixelsfighting.png" id="pixelsfighting"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/portfoliowebsite.png" id="portfoliowebsite"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/vrmuseum.png" id="vrmuseum"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/gogrow.png" id="gogrow"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/2bats.png" id="bats"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/gamejamgames.png" id="gamejamgames"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/scripting.png" id="scripting"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/pong.png" id="pong"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/gameoflife.png" id="gameoflife"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/pianomadness.png" id="pianomadness"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/illustrator.png" id="illustrator"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/videomapping.png" id="videomapping"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/blippar.png" id="blippar"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/museum.png" id="museum"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/helloworld.png" id="helloworld"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/seeds.png" id="seeds"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/glasscannon.png" id="glasscannon"></a>
-                    <a class="button" 
-                    href="html/glasscannon.html"><img src="img/stopmotion.png" id="stopmotion"></a>
-            </div>
+<body>
 
+    <div id="main">
+        <h1>Welcome!</h1>
+        <p>I'm Johny Wuijts, and this is my portfolio website!</p>
+        <div class="buttons">
+            <a class="button" href="#"><img src="img/endlessrunner.png" id="endlessrunner">
+                <a class="button" href="#"><img src="img/philips.png" id="philips"></a>
+                <a class="button" href="#"><img src="img/pixelsfighting.png" id="pixelsfighting"></a>
+                <a class="button" href="#"><img src="img/portfoliowebsite.png" id="portfoliowebsite"></a>
+                <a class="button" href="#"><img src="img/vrmuseum.png" id="vrmuseum"></a>
+                <a class="button" href="#"><img src="img/gogrow.png" id="gogrow"></a>
+                <a class="button" href="#"><img src="img/2bats.png" id="bats"></a>
+                <a class="button" href="#"><img src="img/gamejamgames.png" id="gamejamgames"></a>
+                <a class="button" href="#"><img src="img/scripting.png" id="scripting"></a>
+                <a class="button" href="#"><img src="img/pong.png" id="pong"></a>
+                <a class="button" href="#"><img src="img/gameoflife.png" id="gameoflife"></a>
+                <a class="button" href="#"><img src="img/pianomadness.png" id="pianomadness"></a>
+                <a class="button" href="#"><img src="img/illustrator.png" id="illustrator"></a>
+                <a class="button" href="#"><img src="img/videomapping.png" id="videomapping"></a>
+                <a class="button" href="#"><img src="img/blippar.png" id="blippar"></a>
+                <a class="button" href="#"><img src="img/museum.png" id="museum"></a>
+                <a class="button" href="#"><img src="img/helloworld.png" id="helloworld"></a>
+                <a class="button" href="html/seeds.html"><img src="img/seeds.png" id="seeds"></a>
+                <a class="button" href="html/glasscannon.html"><img src="img/glasscannon.png" id="glasscannon"></a>
+                <a class="button" href="#"><img src="img/stopmotion.png" id="stopmotion"></a>
         </div>
 
-        <canvas id="index-canvas"></canvas>
-        <canvas id="index-canvas-2"></canvas>
-    </body>
+    </div>
+
+    <canvas id="index-canvas"></canvas>
+    <canvas id="index-canvas-2"></canvas>
+</body>
+
 </html>
