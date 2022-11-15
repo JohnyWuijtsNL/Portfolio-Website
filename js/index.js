@@ -1,23 +1,15 @@
-var canvas, canvas2, ctx, ctx2, canvasWidth, canvasHeight, sizeX, sizeY, panelOffSprite, panelOnSprite, panelOffSpriteLoaded, panelOnSpriteLoaded, neighbours;
-var tileSize = 10;
-tileSize = 50;
+var canvas, canvas2, ctx, ctx2, panelOffSprite, panelOnSprite, panelOffSpriteLoaded, panelOnSpriteLoaded;
+var tileSize = 50;
 var field = []
 var oldField = []
-var scrollValue;
-var isHovering = false;
-var isAvoiding = false;
-var avoidTop = 0;
-var projectFont;
-var projectsText;
-var oldProjectsFont = 7;
 var firstTime = true;
+var sizeX = 18;
+var sizeY = 35;
 
 window.onload = init;
 
 
 function init() {
-    sizeX = 18;
-    sizeY = 64;
     canvas = document.getElementById("index-canvas");
     canvas2 = document.getElementById("index-canvas-2");
     ctx = canvas.getContext("2d");
@@ -83,7 +75,7 @@ function draw() {
     }
     for (var x = 1; x < sizeX - 1; x++) {
         for (var y = 1; y < sizeY - 1; y++) {
-            neighbours = 0;
+            var neighbours = 0;
             if (oldField[x - 1][y - 1]) { neighbours++; }
             if (oldField[x][y - 1]) { neighbours++; }
             if (oldField[x + 1][y - 1]) { neighbours++; }
@@ -100,11 +92,22 @@ function draw() {
 
     for (x = 0; x < sizeX; ++x) {
         for (y = 0; y < sizeY; ++y) {
-            if (field[x][y] == oldField[x][y]) {
-
-            }
             drawSprite(field[x][y], x, y)
         }
+    }
+
+    var isEmpty = true;
+    for (x = 0; x < sizeX; ++x) {
+        for (y = 0; y < sizeY; ++y) {
+            if (field[x][y]) {
+                isEmpty = false;
+            }
+        }
+    }
+
+    if (isEmpty)
+    {
+        generateField();
     }
 
     for (x = 1; x < sizeX - 1; ++x) {
