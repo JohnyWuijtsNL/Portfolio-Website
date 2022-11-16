@@ -4,7 +4,7 @@ var field = []
 var oldField = []
 var firstTime = true;
 var sizeX = 18;
-var sizeY = 35;
+var sizeY = 20;
 
 window.onload = init;
 
@@ -57,11 +57,6 @@ function generateField() {
                     field[x][y] = Math.random() > 0.85;
                 }
             }
-        }
-    }
-    for (x = 0; x < sizeX; ++x) {
-        for (y = 0; y < sizeY; ++y) {
-            drawSprite(field[x][y], x, y)
         }
     }
 }

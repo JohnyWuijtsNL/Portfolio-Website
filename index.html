@@ -1,66 +1,223 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
-<head>
-  <meta charset="utf-8">
-  <title>Johny's Portfolio Website</title>
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
-  <script src="js/index-old.js"></script>
-  <style>
-    a.windows:hover {
-      cursor: url('img/Cursor_15_small.png') 12 0, auto;
-    }
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        @font-face {
+            font-family: "Sono";
+            src: url("fonts/Sono-VariableFont_MONO,wght.ttf");
+        }
 
-    .projects {
-      font-size: 40px;
-    }
+        @font-face {
+            font-family: "Windows Regular";
+            src: url("fonts/windows-regular.woff"), url("fonts/windows-regular.ttf");
+        }
 
-    .about {
-      position: relative;
-      top: 0px;
-      font-size: 40px;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0
+        }
 
-    div.about {
-      z-index: 1;
-      height: auto;
-    }
+        body {
+            background-color: #696969;
+            font-family: 'Sono', sans-serif;
+        }
 
-    p.about-text {
-      text-align: left;
-      font-size: 36px;
-    }
-  </style>
-</head>
+        html {
+            word-spacing: -3px;
+        }
 
-<body id="index-body">
-  <div class="index-div">
-    <h1>Hey, I'm Johny Wuijts!</h1>
-    <h2>Things you can do here:</h2>
-    <p class="windows"><a class="windows" title="Contact me" href="html/contact.html"><span
-          class="underline">C</span>ontact Me</a></p>
-    <p class="projects">Take a look at my <a id="projects" title="Take a look at my projects" href="html/projects.html"
-        onmouseover="changeHover(true)" onmouseleave="changeHover(false)">projects</a></p>
-    <p class="projects">Take a look at my <a href="html/cv.html" id="projects" title="Take a look at my CV (boring)" target="blank">CV (boring)</a></p>
-    <p class="about" id="about">Learn all <a title="About me" href="#" onmouseover="avoid(true)"
-        onmouseleave="avoid(false)">about me</a></p>
-  </div>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        #main {
+            background-color: #696969;
+            margin: 0 450px;
+            padding: 0;
+            height: 1000px;
+            width: auto;
+        }
 
+        canvas {
+            position: absolute;
+            top: 0px;
+            width: 450px;
+            z-index: -1;
+            overflow: hidden;
+        }
 
-  <div class="index-div about">
-    <h1>About me</h1>
-    <p class="about-text">I'm a software development student at Sintlucas. I'm very interested in game
-      development, and I
-      also like making non-standard websites like these.<br>I mostly do programming, but I'm also interested in (game)
-      design and can analyze game mechanics to see why they do or don't work.<br><br>If you enjoy my work, please
-      contact me, so we could collaborate on a project. If you're a company considering taking me up for internship, I
-      hope this website helps you decide!</p>
-  </div>
-  <canvas id="index-canvas"></canvas>
-</body>
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 15px;
+            margin: 30px;
+        }
 
-</html>
+        #index-canvas-2 {
+            right: 0px;
+        }
+
+        @media screen and (max-width:1820px) {
+            #main {
+                margin: 0 400px;
+            }
+        }
+
+        @media screen and (max-width:1720px) {
+            #main {
+                margin: 0 350px;
+            }
+        }
+
+        @media screen and (max-width:1620px) {
+            #main {
+                margin: 0 300px;
+            }
+        }
+
+        @media screen and (max-width:1520px) {
+            #main {
+                margin: 0 250px;
+            }
+        }
+
+        @media screen and (max-width:1420px) {
+            #main {
+                margin: 0 200px;
+            }
+        }
+
+        @media screen and (max-width:1320px) {
+            #main {
+                margin: 0 150px;
+            }
+        }
+
+        @media screen and (max-width:1220px) {
+            #main {
+                margin: 0 100px;
+            }
+        }
+
+        @media screen and (max-width:1120px) {
+            #main {
+                margin: 0 50px;
+            }
+        }
+
+        @media screen and (max-width:1020px) {
+            #main {
+                margin: 0;
+            }
+
+            canvas {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width:900px) {
+            .buttons {
+                grid-template-columns: repeat(2, 1fr);
+                margin: 20px;
+            }
+        }
+
+        @media screen and (max-width:600px) {
+            .buttons {
+                grid-template-columns: repeat(1, 1fr);
+                margin: 15px;
+            }
+        }
+
+        h1 {
+            font-size: 60px;
+            padding-top: 10px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            transition: transform .08s linear
+        }
+
+        img:hover {
+            transform: scale(1.03)
+        }
+
+        a.windows {
+            font-family: "Windows Regular";
+            color: black;
+            font-size: 36px;
+            background-color: #c0c0c0;
+            border-style: solid;
+            border-width: 3px;
+            border-left-color: white;
+            border-bottom-color: black;
+            border-top-color: white;
+            border-right-color: black;
+            padding: 0 40px;
+            text-decoration: none;
+        }
+
+        a.windows:hover {
+            cursor: url('img/Cursor_15_small.png') 6 0, auto;
+        }
+
+        a.windows:active {
+            border-left-color: black;
+            border-bottom-color: white;
+            border-top-color: black;
+            border-right-color: white;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+    </style>
+        <script src="js/index.js"></script>
+    </head>
+
+    <body>
+
+        <div id="main">
+            <h1>Welcome!</h1>
+            <p>I'm Johny Wuijts, and this is my portfolio website!</p>
+            <div class="buttons">
+                <a class="button" href="#"><img src="img/endlessrunner.png">
+                    <a class="button" href="#"><img src="img/philips.png"></a>
+                    <a class="button" href="#"><img
+                            src="img/pixelsfighting.png"></a>
+                    <a class="button" href="#"><img
+                            src="img/portfoliowebsite.png"></a>
+                    <a class="button" href="#"><img src="img/vrmuseum.png"></a>
+                    <a class="button" href="#"><img src="img/gogrow.png"></a>
+                    <a class="button" href="#"><img src="img/2bats.png"></a>
+                    <a class="button" href="#"><img src="img/gamejamgames.png"></a>
+                    <a class="button" href="#"><img src="img/gameoflife.png"></a>
+                    <a class="button" href="#"><img src="img/pong.png"></a>
+                    <a class="button" href="#"><img src="img/scripting.png"></a>
+                    <a class="button" href="#"><img src="img/pianomadness.png"></a>
+                    <a class="button" href="#"><img src="img/illustrator.png"></a>
+                    <a class="button" href="#"><img src="img/videomapping.png"></a>
+                    <a class="button" href="#"><img src="img/museum.png"></a>
+                    <a class="button" href="html/seeds.html"><img
+                            src="img/seeds.png"></a>
+                    <a class="button" href="html/glasscannon.html"><img
+                            src="img/glasscannon.png"></a>
+                    <a class="button" href="#"><img src="img/stopmotion.png"></a>
+                </div>
+                <p class="windows"><a class="windows" title="Contact me"
+                        href="html/contact.html"><span
+                            class="underline">C</span>ontact Me</a></p>
+            </div>
+
+            <canvas id="index-canvas"></canvas>
+            <canvas id="index-canvas-2"></canvas>
+        </body>
+
+    </html>
