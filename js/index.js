@@ -136,10 +136,12 @@ function drawSprite(isOn, x, y)
     {
         if (x < 10)
         {
+            ctx.globalAlpha = 0.5;
             ctx.drawImage(panelOnSprite, x * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
         }
         else
         {
+            ctx2.globalAlpha = 0.5;
             ctx2.drawImage(panelOnSprite, (x - 9) * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
         }
     }
@@ -147,10 +149,12 @@ function drawSprite(isOn, x, y)
     {
         if (x < 10)
         {
+            ctx.globalAlpha = 0.5;
             ctx.drawImage(panelOffSprite, x * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
         }
         else
         {
+            ctx2.globalAlpha = 0.5;
             ctx2.drawImage(panelOffSprite, (x - 9) * tileSize - tileSize, y * tileSize - tileSize, tileSize, tileSize);
         }
     }
