@@ -4,7 +4,7 @@ var field = []
 var oldField = []
 var firstTime = true;
 var sizeX = 18;
-var sizeY = 20;
+var sizeY = 22;
 
 window.onload = init;
 

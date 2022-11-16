@@ -37,16 +37,16 @@ div.about {
 body.contact {
   background-color: #fcbce1;
   background-image: url("img/contact-bg.png");
-  background-size: 100%;
+  background-size: 220vh;
   background-repeat: repeat-y;
 }
 
 div.windows {
-  position: absolute;
   display: table;
-  top:100px;
-  left:40%;
+  padding-top:100px;
   padding: 3px;
+
+  margin:auto;
 }
 
 div.windows-title {
