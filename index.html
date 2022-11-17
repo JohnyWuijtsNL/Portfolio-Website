@@ -3,31 +3,8 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css">
     <style>
-        @font-face {
-            font-family: "Sono";
-            src: url("fonts/Sono-VariableFont_MONO,wght.ttf");
-        }
-
-        @font-face {
-            font-family: "Windows Regular";
-            src: url("fonts/windows-regular.woff"), url("fonts/windows-regular.ttf");
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0
-        }
-
-        body {
-            background-color: #696969;
-            font-family: 'Sono', sans-serif;
-        }
-
-        html {
-            word-spacing: -3px;
-        }
-
         #main {
             background-color: #696969;
             margin: 0 450px;
@@ -157,40 +134,6 @@
             text-align: center;
         }
 
-        p.windows {
-            padding: 40px;
-        }
-
-        a.windows {
-            font-family: "Windows Regular";
-            color: black;
-            font-size: 36px;
-            background-color: #c0c0c0;
-            border-style: solid;
-            border-width: 3px;
-            border-left-color: white;
-            border-bottom-color: black;
-            border-top-color: white;
-            border-right-color: black;
-            padding: 0 40px;
-            text-decoration: none;
-        }
-
-        a.windows:hover {
-            cursor: url('img/Cursor_15_small.png') 6 0, auto;
-        }
-
-        a.windows:active {
-            border-left-color: black;
-            border-bottom-color: white;
-            border-top-color: black;
-            border-right-color: white;
-        }
-
-        .underline {
-            text-decoration: underline;
-        }
-
         .disabled {
             transition: transform .2s linear;
             width: auto;
@@ -202,6 +145,10 @@
 
         .disabled:hover {
             transform: scale(1)
+        }
+
+        p.windows {
+            padding: 40px;
         }
     </style>
     <script src="js/index.js"></script>
@@ -237,7 +184,7 @@
                         src="img/seeds.png" title="SEEDS"></a>
                 <a href="https://johnywuijtsnl.itch.io/glass-cannon" target="_blank"><img
                         src="img/glasscannon.png" title="Glass Cannon"></a>
-                <img src="img/stopmotion.png" class="disabled" title="Stop Motion (coming soon!)">
+                <a href="html/stopmotion.html" target="_blank"><img src="img/stopmotion.png" title="Stop Motion"></a>
             </div>
             <p class="windows"><a class="windows" title="Contact me" href="html/contact.html"><span
                         class="underline">C</span>ontact Me</a></p>
