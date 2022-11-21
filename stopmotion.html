@@ -24,7 +24,62 @@
                 font-size: 80px;
                 padding: 40px;
                 color: yellow;
+                padding-bottom: 0;
             }
+
+            h2 {
+                text-align: center;
+                padding: 40px;
+                padding-bottom: 0;
+            }
+
+            iframe {
+                text-align: center;
+                width: 784px;
+                height: 441px;
+            }
+
+            div.center {
+                width: 784px;
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 40px;
+            }
+
+            p {
+                padding: 20px 60px;
+            }
+
+            ol {
+                padding: 20px 60px 20px 85px;
+            }
+
+            ul {
+                padding: 20px 60px 20px 85px;
+            }
+
+            img {
+                display: block;
+                padding: 40px 0;
+                width: 800px;
+                margin-left:auto;
+                margin-right:auto;
+            }
+
+            h3 {
+                text-align: center;
+                padding-top: 40px;
+            }
+
+            h4 {
+                padding: 20px 60px;
+            }
+
+            p.center {
+                padding: 0;
+                text-align: center;
+            }
+
 
             @media screen and (max-width:1045px) {
                 .article {
@@ -34,8 +89,12 @@
             }
 
                 @media screen and (max-width:600px) {
+                body {
+                    font-size: 200%;
+                }
+
                 h1 {
-                    font-size: 50px;
+                    font-size: 160px;
                 }
             }
 
@@ -48,13 +107,231 @@
                 background-position: 50% 0;
                 z-index: -1;
             }
+
+            a.purple {
+                color: red;
+            }
+
+            a.purple:active {
+                color: orange;
+            }
+
+            a.purple:visited {
+                color: brown;
+            }
+
+            a.blue {
+                color: cyan;
+            }
+
+            a.blue:active {
+                color: blue;
+            }
+
+            a.blue:visited {
+                color: skyblue;
+            }
         </style>
     </head>
     <body>
         <div id="background"></div>
+        <a id="logo" title="Return to home page!" href="index.html"><img src="img/logo.png"></a>
         <div id="article">
-            <h1>Stop Motion</h1>
-            <p>Nothing here yet! Please come back later.</p>
+            <h1 id="top">Stop Motion</h1>
+            <p class="center">Made by Kylian Smeets and Johny Wuijts (me)</p>
+            <h2>Final product:</h2>
+            <div class="center"><iframe
+                    src="https://www.youtube.com/embed/Sb2-u1uQkyg"
+                    title="Stopmotion Video" frameborder="0"
+                    allow="accelerometer; autoplay;
+                    clipboard-write; encrypted-media; gyroscope;
+                    picture-in-picture"
+                    allowfullscreen></iframe></div>
+            <h2>Process:</h2>
+            <h3>Introduction</h3>
+            <p>I made this project all the way back in 2019. Revisiting it in
+                2022, I'm still proud of it, but there are also a lot of big
+                mistakes: we were way too ambitious, had no idea what we could
+                do in the limited time we had, and this resulted in an extremely
+                long process for what is only a 30 second video. I translated
+                the process into English and made a few things clearer, the
+                original Dutch version, along with
+                extra behind the scenes images and videos, can be found <a
+                    class="purple"
+                    href="https://www.dropbox.com/sh/l9t86z4fzgjlyhh/AACeALcLlEazarlQV1a3xZ-5a?dl=0"
+                    target="_blank" title="Dropbox link">here</a>.</p>
+            <h3>Phase 1: Ideas</h3>
+            <p>The client (a teacher) asked Kylian if he wanted to make a
+                stopmotion video. He could present this video during his intake
+                to SintLucas. The client brought Playmobil and was looking for
+                something to use it for.
+                Kylian looked through the Playmobil, and then wrote a few ideas
+                (in Dutch):</p>
+            <img src="img/ideas.png" width="800px"
+                title="The handwritten ideas, transcribed in English below">
+            <p>English transcription:</p>
+            <ol>
+                <li>Chase through time. The villain stole something important
+                    and is trying to flee using a time machine.</li>
+                <li>Someone buried a huge treasure that many people are trying
+                    to find.</li>
+                <li>The revenge of the indians. The indians want to take the
+                    land back that had been taken from them, and do everything
+                    they can to succeed.</li>
+                <li>A failed experiment. A professor thought he could save the
+                    world, but everything went wrong. The past and future got
+                    mixed up and the world is about to end. Can the professor
+                    still save the world?</li>
+                <li>The heroes of the past. People from various periods in time,
+                    like a knight, hunter-gatherer, indian and robot, and are on
+                    an
+                    adventure together.</li>
+            </ol>
+            <h3>Phase 2: I joined</h3>
+            <p>The client asked Johny (with Kylian's permission) if he wanted to
+                help
+                Kylian with this stopmotion project and if he could help Kylian
+                choose one of the 5 ideas. The client had a preference but let
+                us choose first.</p>
+            <h3>Phase 3: Choosing an idea</h3>
+            <p>Johny and Kylian discussed the ideas and ended up choosing idea 2
+                (the buried treasure), in combination with characters from
+                various periods in
+                time (idea 5). We didn't choose idea 1 or 4 because we thought
+                they would be too complicated. We didn't choose idea 3 because
+                idea 5 had indians as well.</p>
+            <p>Then we used the <a class="purple"
+                    href="https://en.wikipedia.org/wiki/Dan_Harmon#%22Story_circle%22_technique"
+                    target="_blank" title="Wikipedia link">story circle theory</a>
+                to write a basic
+                plotline for the story:</p>
+            <ol start="0">
+                <li>Treasure is buried.</li>
+                <li>The main characters are fighting monsters, making you learn
+                    about their personalities.</li>
+                <li>Someone thanks the main characters for slaying the monsters,
+                    and tells them about a hidden treasure.</li>
+                <li>Everyone wants to find the treasure, so the main characters
+                    start their journey to find it.</li>
+                <li>They look all around the world in search of the treasure.</li>
+                <li>They find the treasure.</li>
+            </ol>
+            <p>At this point, we wanted to start with the stopmotion, so we
+                delayed working out step 6, 7 and 8.</p>
+            <h3>Phase 4: Requirements</h3>
+            <p>We planned to make a short film, of around 11 minutes. We needed:</p>
+            <ul>
+                <li>People to voice act for us</li>
+                <li>A green screen to add backgrounds and special effects</li>
+                <li>Sound effects to add to the scenes</li>
+            </ul>
+            <h3>Phase 5: Working out the scenes</h3>
+            <p>We started working out a few scenes: a desert, a forest and a
+                dungeon.</p>
+            <ol>
+                <li>The desert: a greenscreen with sandstorm effect.</li>
+                <li>The forest: handmade trees made from corks, with added
+                    moving parts like grass and insects.</li>
+                <li>The dungeon: a hallway where the characters get chased by
+                    digitally
+                    animated monsters.</li>
+            </ol>
+            <h4>The desert</h4>
+            <p>We wanted to use a greenscreen, but after testing for a while, we
+                concluded that with the lighting and room we had, this wouldn't
+                look good, and would only result in more work and less quality.
+                For example, after messing with the settings for 30 minutes,
+                this was our best result:</p>
+            <img src="img/greensceen.png" width="800px"
+                title="A greenscreen test. You can see the green edges on the
+                sides of the character and fence.">
+            <p>You can still see the green screen on the edges of the
+                characters. We researched other stopmotion videos, and we
+                discovered that
+                other stopmotion works rarely use any greenscreen. Stop motion
+                movies almost always use handmade backgrounds. Even if they do
+                use it, it is very specialized. We had no experience with any of
+                this, so we decided not to use a greenscreen and instead make
+                the backgrounds ourselves.</p>
+            <p>Since we weren't using a greenscreen anymore, we were also
+                considering not adding digitally animated monsters. We wanted to
+                make a giant spider out of K'nex, but there was no K'nex
+                available. We ended up making clay monsters.</p>
+            <p>For the background, instead of a greenscreen, we made it
+                physically, by digitally drawing the horizon, and using wads of
+                paper as rocks/sand. We made the background on top of a box, so
+                that we could bury the treasure in the "ground".</p>
+            <img src="img/decorsetup1.jpg"
+                title="Behind the scenes of the desert scene">
+            <p>While we were making this scene, we realized it was taking too
+                long, and we couldn't finish the whole movie in time. We decided
+                to make it into a trailer for a movie that doesn't exist, to
+                make it shorter. Now we only had to finish a few scenes, and we
+                didn't need to think out the whole plot.</p>
+            <p>We also thought about adding a narrator, that could talk about
+                the events of the movie, and also add a few jokes. We thought
+                about using UTAUloid, a free voice synthesizer program, for
+                this. We also thought about having the characters sit in a room
+                together, so they could talk about their adventures, with
+                cutaways to different scenes. This would allow for completely
+                separate scenes with no connections. We started taking pictures
+                for the first scene, and made it into a video to see how it
+                looked.</p>
+            <h4>The dungeon</h4>
+            <p>While working on this scene, Johny suggested he add background
+                music, using the music making software BoscaCeoil, since he was
+                already experimenting with it and thought it would be a good
+                addition. Meanwhile, Kylian was drawing the walls and the floors
+                of the dungeon. After printing these, Kylian built the decor
+                while Johny worked on the background music.</p>
+            <img src="img/decorsetup2.jpg"
+                title="Behind the scenes of the dungeon scene">
+            <p>Johny brought a lamp
+                that could change into any color, we wanted to use this for
+                lighting this scene.</p>
+            <img src="img/decorsetup3.jpg"
+                title="Behind the scenes of the dungeon scene, the lamp turned
+                on">
+            <p>We found some clay for the monsters, and
+                did a survey with other people in our class to see which light
+                and clay color would be best. We then started recording the
+                second scene and combined the end result with the first scene,
+                along with background music.</p>
+            <h3>Phase 6: Abrupt end</h3>
+            <p>We had to stop working on the project, because Kylian was about
+                to do is intake at Sintlucas, which was why we did the project.
+                We already had pieces of fabric and rope for the forest scene.
+                But we never got to build it or record it.</p>
+            <h3>Looking back</h3>
+            <p>After making this process document, we realized there were a lot
+                of things we could've done differently. We should get better at
+                planning and dividing tasks. For the stopmotion itself, we
+                should've moved the characters less each frame, so the end
+                result would be smoother.</p>
+            <h3>Endnotes</h3>
+            <p>This is the end of the process.<br>Used software:</p>
+            <ul>
+                <li>Image editing: <a class="blue" href="https://krita.org/en/"
+                        target="_blank" title="Link to Krita website">Krita</a>
+                    and <a class="blue" href="https://firealpaca.com/"
+                        target="_blank" title="Link to FireAlpaca website">FireAlpaca</a></li>
+                <li>Video editing: <a class="blue"
+                        href="https://www.nchsoftware.com/videopad/"
+                        target="_blank" title="Link to Videopad website">Videopad</a>
+                    and <a class="blue"
+                        href="https://fxhome.com/hitfilm-express"
+                        target="_blank" title="Link to Hitfilm Express website">Hitfilm
+                        Express</a></li>
+                <li>Music: <a class="blue"
+                        href="https://boscaceoil.net/"
+                        target="_blank" title="Link to BoscaCeoil website">BoscaCeoil</a></li>
+                <li>Camera: Canon EOS 1300D</li>
+                <li>Recording software: <a class="blue"
+                        href="http://digicamcontrol.com/"
+                        target="_blank" title="Link to DigiCamcontrol website">DigiCamcontrol</a></li>
+            </ul>
+            <h2><a class="blue" href="#top">Go back to top</a></h2>
+            <p></p>
         </div>
 
         <script>
@@ -79,7 +356,7 @@
                         console.log(transition);
                         article.style.backgroundColor = "rgb(" + (34 - 34 * transition) + ", " + (34 - 34 * transition) + ", " + (136 - 136 * transition) + ")";
                     }
-                    else if (scrollPercentage > 40 && scrollPercentage < 50)
+                    else if (scrollPercentage >= 40 && scrollPercentage <= 50)
                     {
                         var transition = (scrollPercentage - 50) / 10 * -1;
                         article.style.backgroundColor = "rgb(" + 204 * transition + ", " + 153 * transition + ", " + 187 * transition + ")";
