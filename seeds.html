@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset=UTF-8>
+    <title>SEEDS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Beau+Rivage&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: white;
+            font-family: sans-serif;
+        }
+
+        #canvas {
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            filter: blur(4px);
+        }
+
+        #seeds-main {
+            background-color: #FFFFFF80;
+            margin: auto;
+            width: 50%;
+            border-radius: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Beau Rivage', cursive;
+            color: green;
+            padding-top: 40px;
+            margin-top: 20%;
+        }
+
+        p.description {
+            padding: 50px;
+            font-size: 20px;
+        }
+
+        p.link {
+            font-size: 30px;
+            text-align: center;
+        }
+    </style>
+    <script type="application/javascript">
+
+        var canvas, ctx, interval, sizeX, sizeY, sum, bias, biasNumber, oldField, field, neighbours, neighbourRatios;
+        var color1 = "#41DFFF10";
+        var color2 = "#ffffff10";
+
+        window.onload = init;
+
+        window.addEventListener('scroll', function () {
+            scrollValue = window.scrollY;
+            document.getElementById('canvas').style.top = scrollValue * 0.5 + "px";
+        })
+
+        function init() {
+            canvas = document.getElementById("canvas");
+            ctx = canvas.getContext("2d");
+            sizeX = Math.floor(window.innerWidth / 8)
+            sizeY = Math.floor(document.body.scrollHeight / 8 * 3)
+            canvas.setAttribute("width", sizeX);
+            canvas.setAttribute("height", sizeY);
+
+
+            oldField = new Array(sizeX);
+            field = new Array(sizeX);
+            neighbours = new Array(sizeX);
+            neighbourRatios = new Array(sizeX);
+
+            for (x = 0; x < oldField.length; ++x) {
+                oldField[x] = new Array(sizeY);
+                field[x] = new Array(sizeY);
+                neighbours[x] = new Array(sizeY);
+                neighbourRatios[x] = new Array(sizeY);
+            }
+
+            for (x = 0; x < sizeX; ++x) {
+                for (y = 0; y < sizeY; ++y) {
+                    neighbourRatios[x][y] = 0;
+                    neighbours[x][y] = 8;
+                    if (x == 0 || x == sizeX - 1) {
+                        neighbours[x][y] = 5;
+                        if (y == 0 || y == sizeY - 1) {
+                            neighbours[x][y] = 3
+                        }
+                    }
+                    if (y === 0 || y === sizeY - 1) {
+                        neighbours[x][y] = 5;
+                        if (x === 0 || x === sizeX - 1) {
+                            neighbours[x][y] = 3
+                        }
+                    }
+
+
+                    if (Math.floor(Math.random() * 50) == 0) {
+                        oldField[x][y] = 1;
+                        sum += 1
+                    }
+                    else {
+                        oldField[x][y] = 0;
+                    }
+                    field[x][y] = oldField[x][y];
+                }
+            }
+            sum = sum / (sizeX * sizeY);
+
+            for (var i = 0; i < 50; i++) {
+                calculateRatios();
+                nextGen();
+            }
+            interval = setInterval(update, 20);
+
+        }
+
+
+        function calculateRatios() {
+            for (x = 0; x < sizeX; ++x) {
+                for (y = 0; y < sizeY; ++y) {
+                    neighbourRatios[x][y] = 0;
+                    if (x > 0) {
+                        if (y > 0) { neighbourRatios[x][y] += oldField[x - 1][y - 1]; }
+                        neighbourRatios[x][y] += oldField[x - 1][y];
+                        if (y < sizeY - 1) { neighbourRatios[x][y] += oldField[x - 1][y + 1]; }
+                    }
+
+                    if (y > 0) { neighbourRatios[x][y] += oldField[x][y - 1]; }
+                    if (y < sizeY - 1) { neighbourRatios[x][y] += oldField[x][y + 1]; }
+
+                    if (x < sizeX - 1) {
+                        if (y > 0) { neighbourRatios[x][y] += oldField[x + 1][y - 1]; }
+                        neighbourRatios[x][y] += oldField[x + 1][y];
+                        if (y < sizeY - 1) { neighbourRatios[x][y] += oldField[x + 1][y + 1]; }
+                    }
+
+                    neighbourRatios[x][y] = neighbourRatios[x][y] / neighbours[x][y];
+                }
+            }
+        }
+
+
+
+
+
+        function draw() {
+
+
+            for (x = 0; x < sizeX; ++x) {
+                for (y = 0; y < sizeY; ++y) {
+                    ctx.fillStyle = color1;
+                    if (oldField[x][y] === 1) { ctx.fillStyle = color2; }
+                    ctx.fillRect(x, y, 1, 1);
+                }
+            }
+        }
+
+        function nextGen() {
+
+            for (x = 0; x < sizeX; ++x) {
+                for (y = 0; y < sizeY; ++y) {
+                    if (bias < 0) {
+                        help = 1 - Math.random() * (1 + bias);
+                    }
+                    else {
+                        help = Math.random() * (1 - bias);
+                    }
+
+
+
+
+                    if ((neighbourRatios[x][y]) > help) {
+                        oldField[x][y] = 1;
+                    } else if ((neighbourRatios[x][y]) < help) {
+                        oldField[x][y] = 0;
+                    }
+                }
+            }
+
+
+            sum = 0;
+            for (x = 0; x < sizeX; ++x) {
+                for (y = 0; y < sizeY; ++y) {
+                    if (oldField[x][y] == 1) sum += 1;
+                }
+            }
+            sum = sum / (sizeX * sizeY);
+
+            biasNumber = (sum - 0.5) * 2 * -100;
+            changeBias(biasNumber)
+        }
+
+
+        function update() {
+            calculateRatios();
+            nextGen();
+            draw();
+        }
+
+        function changeBias(value) {
+            bias = value / 100;
+            bias = bias * bias * bias;
+        }
+
+    </script>
+</head>
+
+
+<body>
+    <canvas id="canvas" width="384" height="216"></canvas>
+    <div id="seeds-main">
+        <h1>SEEDS</h1>
+        <p class="description">SEEDS is a game I made for my intake assignment at SintLucas. For the assignment, we had
+            two weeks to make
+            something with the theme being "The beginning". I chose to make a collection of minigames that are about
+            taking a seed or fruit to the end, so it can "begin" their life as a plant. It ended up being only two
+            minigames, but I think they turned out pretty well.<br><br>Software used:
+            <br>- <a href="https://www.yoyogames.com/en/gamemaker" title="GameMaker Studio 2">GameMaker Studio 2</a><br>- <a href="https://krita.org/en/" title="Krita">Krita</a><br>- <a href="https://boscaceoil.net/" title="Bosca Ceoil">Bosca Ceoil</a><br>- <a href="https://www.audacityteam.org/" title="Audacity">Audacity</a></p>
+
+        <p class="link"><a href="https://johnywuijtsnl.itch.io/seeds" title="Play SEEDS in your browser!"
+                target="blank">Play SEEDS in your browser!</a></p>
+        <p class="link"><a href="https://www.youtube.com/watch?v=NlOpKGZdUeM"
+                title="Watch a playthrough of one of the minigames!" target="blank">Watch a playthrough of one of the
+                minigames!</a></p><br><br>
+    </div>
+
+
+</body>
+
+</html>
