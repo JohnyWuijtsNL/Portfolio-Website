@@ -390,12 +390,10 @@
                 window.addEventListener("scroll", function (event) {
                     var scrollDistance = this.scrollY;
                     scrollPercentage = 100 / (document.body.scrollHeight - window.innerHeight) * scrollY;
-                    console.log(scrollPercentage);
 
                     if (scrollPercentage > 50 && scrollPercentage < 60)
                     {
                         var transition = (scrollPercentage - 60) / 10 * -1;
-                        console.log(transition);
                         article.style.backgroundColor = "rgb(" + (34 - 34 * transition) + ", " + (34 - 34 * transition) + ", " + (136 - 136 * transition) + ")";
                     }
                     else if (scrollPercentage >= 40 && scrollPercentage <= 50)
